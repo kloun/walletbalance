@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20260224-01
+      author: Victor Kukshiev
+      changes:
+        - createTable:
+            tableName: wallets
+            columns:
+              - column:
+                  name: uid
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: balance
+                  type: NUMERIC(19,2)
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: owner
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+      rollback:
+        - dropTable:
+            tableName: wallets
